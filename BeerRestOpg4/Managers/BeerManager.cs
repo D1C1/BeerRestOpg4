@@ -6,7 +6,7 @@ using BeerMorten;
 
 namespace BeerRestOpg4.Managers
 {
-    public class BeerManager
+    public class BeerManager : IBeerManager
     {
         private static int _nextId = 1;
 

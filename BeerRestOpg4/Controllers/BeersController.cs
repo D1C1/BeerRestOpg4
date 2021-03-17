@@ -14,7 +14,14 @@ namespace BeerRestOpg4.Controllers
     [ApiController]
     public class BeersController : ControllerBase
     {
-        private readonly BeerManager _manager = new BeerManager();
+        private readonly IBeerManager _manager;
+
+        public BeersController(BeerContext context)
+        {
+            //_ manger = new BeerManager();
+            _manager = new BeerManagerEF(context);
+        }
+
         // GET: api/<BeersController>
         [HttpGet]
         public IEnumerable<Beer> Get()
