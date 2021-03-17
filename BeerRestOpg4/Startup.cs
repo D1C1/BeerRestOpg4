@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +33,9 @@ namespace BeerRestOpg4
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Items API", Version = "v1.0" });
 
             });
+
+            services.AddDbContext<BeerContext>(opt => opt.UseSqlServer(Secrets.connectionstring));
+
             services.AddControllers();
         }
 
